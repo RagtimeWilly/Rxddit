@@ -14,7 +14,7 @@ namespace Rxddit.Tests
         {
             var reddit = new RedditClient(() => new HttpClient());
 
-            var pollingClient = new RedditPollingClient(reddit, "funny", TimeSpan.FromSeconds(10));
+            var pollingClient = new RedditPollingClient(reddit, "funny", TimeSpan.FromSeconds(10), ex => { });
 
             var resetEvent = new ManualResetEvent(false);
 

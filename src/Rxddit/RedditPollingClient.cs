@@ -17,15 +17,17 @@ namespace Rxddit
         private readonly string _subredditName;
         private readonly Subject<RedditPostData> _posts;
         private readonly TimeSpan _interval;
+        private readonly Action<Exception> _onError;
 
         private bool _stop;
         private IEnumerable<string> _knownPostIds;
 
-        public RedditPollingClient(IRedditClient reddit, string subredditName, TimeSpan interval)
+        public RedditPollingClient(IRedditClient reddit, string subredditName, TimeSpan interval, Action<Exception> onError)
         {
             _reddit = reddit;
             _subredditName = subredditName;
             _interval = interval;
+            _onError = onError;
 
             _posts = new Subject<RedditPostData>();
 
@@ -48,14 +50,21 @@ namespace Rxddit
                     .Subscribe(
                         async x =>
                         {
-                            var newPosts = await _reddit.GetPosts(url);
-
-                            foreach (var post in newPosts.Where(p => !_knownPostIds.Contains(p.Id)))
+                            try
                             {
-                                _posts.OnNext(post);
-                            }
+                                var newPosts = await _reddit.GetPosts(url);
 
-                            _knownPostIds = newPosts.Select(p => p.Id);
+                                foreach (var post in newPosts.Where(p => !_knownPostIds.Contains(p.Id)))
+                                {
+                                    _posts.OnNext(post);
+                                }
+
+                                _knownPostIds = newPosts.Select(p => p.Id);
+                            }
+                            catch (Exception ex)
+                            {
+                                _onError(ex);
+                            }
                         });
             });
         }
