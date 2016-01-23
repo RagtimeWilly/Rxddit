@@ -17,9 +17,7 @@ namespace Rxddit
         private readonly string _subredditName;
         private readonly Subject<RedditPostData> _posts;
         private readonly TimeSpan _interval;
-        private readonly Action<Exception> _onError;
-
-        private bool _stop;
+        private readonly Action<Exception>  _onError;
         private IEnumerable<string> _knownPostIds;
 
         public RedditPollingClient(IRedditClient reddit, string subredditName, TimeSpan interval, Action<Exception> onError)
@@ -30,8 +28,6 @@ namespace Rxddit
             _onError = onError;
 
             _posts = new Subject<RedditPostData>();
-
-            _stop = false;
         }
 
         public IObservable<RedditPostData> Posts { get { return _posts; } }
