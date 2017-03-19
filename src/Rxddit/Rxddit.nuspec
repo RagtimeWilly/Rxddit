@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Rxddit</id>
+        <version>$version$</version>
+        <title>Rxddit</title>
+        <authors>Sean Comiskey</authors>
+        <owners>Sean Comiskey</owners>
+		<licenseUrl>https://github.com/RagtimeWilly/Rxddit/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/RagtimeWilly/Rxddit/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>.NET Client for Reddit utilizing Reactive Extensions</description>
+        <copyright>Copyright © Sean Comiskey 2016</copyright>
+		<tags>reddit</tags>
+        <dependencies>
+			<dependency id="Newtonsoft.Json" version="9.0.1" />
+			<dependency id="Rx-Core" version="2.2.5" />
+			<dependency id="Rx-Interfaces" version="2.2.5" />
+			<dependency id="Rx-Linq" version="2.2.5" />
+			<dependency id="Rx-Main" version="2.2.5" />
+			<dependency id="Rx-PlatformServices" version="2.2.5" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\Rxddit.dll" target="lib\net452\Rxddit.dll" />
+    </files>
+</package>
