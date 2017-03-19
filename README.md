@@ -2,6 +2,10 @@
 
 .NET Client for reddit utilizing Reactive Extensions
 
+## Installing from NuGet
+
+`PM> Install-Package Rxddit`
+
 ## Polling Client
 
 The polling client exposes an `IObservable<RedditPostData>` which will be populated with new post data from a specified subreddit peridodically.
