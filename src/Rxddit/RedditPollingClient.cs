@@ -30,7 +30,7 @@ namespace Rxddit
             _posts = new Subject<RedditPostData>();
         }
 
-        public IObservable<RedditPostData> Posts { get { return _posts; } }
+        public IObservable<RedditPostData> Posts => _posts;
 
         public async Task Start()
         {

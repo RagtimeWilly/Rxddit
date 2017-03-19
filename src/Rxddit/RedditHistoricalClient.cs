@@ -33,14 +33,11 @@ namespace Rxddit
             _stop = false;
         }
 
-        public IObservable<RedditPostData> Posts
-        {
-            get { return _posts; }
-        }
+        public IObservable<RedditPostData> Posts => _posts;
 
         public async void Start()
         {
-            var urlFormat = "http://www.reddit.com/r/{0}/search.json?sort=new&q=timestamp%3A{1}..{2}&restrict_sr=on&syntax=cloudsearch";
+            const string urlFormat = "http://www.reddit.com/r/{0}/search.json?sort=new&q=timestamp%3A{1}..{2}&restrict_sr=on&syntax=cloudsearch";
 
             var from = DateTime.Now.AddMonths(-1);
             var to = DateTime.Now;
