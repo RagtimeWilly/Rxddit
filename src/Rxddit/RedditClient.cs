@@ -10,7 +10,7 @@ namespace Rxddit
 {
     public class RedditClient : IRedditClient
     {
-        private Func<HttpClient> _clientFactory;
+        private readonly Func<HttpClient> _clientFactory;
 
         public RedditClient(Func<HttpClient> clientFactory)
         {
