@@ -1,6 +1,6 @@
 ![Build Status](https://ci.appveyor.com/api/projects/status/github/RagtimeWilly/Rxddit?branch=master&svg=true) [![NuGet](https://img.shields.io/nuget/v/Rxddit.svg)](https://www.nuget.org/packages/Rxddit/)
 
-.Net Client for reddit utilizing Reactive Extensions
+.NET Client for reddit utilizing Reactive Extensions
 
 ## Polling Client
 
